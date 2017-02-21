@@ -1,4 +1,4 @@
-﻿using ExperimentalTools.Tests.Infrastructure.Diagnostics;
+using ExperimentalTools.Tests.Infrastructure.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Diagnostics;
@@ -7,6 +7,7 @@ using ExperimentalTools.Options;
 using Xunit;
 using ExperimentalTools.Workspace;
 using Microsoft.CodeAnalysis;
+using ExperimentalTools.Environment;
 
 namespace ExperimentalTools.Tests.Features.Namespace
 {
@@ -18,7 +19,7 @@ namespace ExperimentalTools.Tests.Features.Namespace
             new NamespaceNormalizationAnalyzer();
 
         protected override CodeFixProvider CodeFixProvider => 
-            new NamespaceNormalizationCodeFix(new OptionsService());
+            new NamespaceNormalizationCodeFix(new OptionsService(new EnvironmentService()));
 
         public NamespaceNormalizationCodeFixTests()
         {

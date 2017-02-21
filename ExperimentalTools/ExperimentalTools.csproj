@@ -33,7 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Environment\EnvironmentData.cs" />
+    <Compile Include="Environment\EnvironmentService.cs" />
     <Compile Include="FeatureIdentifiers.cs" />
+    <Compile Include="IEnvironment.cs" />
     <Compile Include="IOptions.cs" />
     <Compile Include="ServiceLocator.cs" />
     <Compile Include="Options\OptionsBucket.cs" />

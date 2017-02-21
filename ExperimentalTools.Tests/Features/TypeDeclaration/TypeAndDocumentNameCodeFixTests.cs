@@ -1,4 +1,5 @@
-﻿using ExperimentalTools.Options;
+using ExperimentalTools.Environment;
+using ExperimentalTools.Options;
 using ExperimentalTools.Roslyn.Features.TypeDeclaration;
 using ExperimentalTools.Tests.Infrastructure;
 using ExperimentalTools.Tests.Infrastructure.Diagnostics;
@@ -14,11 +15,16 @@ namespace ExperimentalTools.Tests.Features.TypeDeclaration
 {
     public class TypeAndDocumentNameCodeFixTests : CodeFixTest
     {
+        public TypeAndDocumentNameCodeFixTests()
+        {
+            EnvironmentData.Instance.IDEVersion = "14.0";
+        }
+
         protected override DiagnosticAnalyzer Analyzer => 
             new TypeAndDocumentNameAnalyzer();
 
         protected override CodeFixProvider CodeFixProvider =>
-            new TypeAndDocumentNameCodeFix(new OptionsService());
+            new TypeAndDocumentNameCodeFix(new OptionsService(new EnvironmentService()));
 
         [Fact]
         public Task TypeRenameTest()

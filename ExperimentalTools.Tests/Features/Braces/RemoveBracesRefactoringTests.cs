@@ -1,4 +1,4 @@
-﻿using ExperimentalTools.Tests.Infrastructure.Refactoring;
+using ExperimentalTools.Tests.Infrastructure.Refactoring;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
@@ -6,6 +6,7 @@ using Microsoft.CodeAnalysis.CodeRefactorings;
 using ExperimentalTools.Roslyn.Features.Braces;
 using ExperimentalTools.Options;
 using Xunit;
+using ExperimentalTools.Environment;
 
 namespace ExperimentalTools.Tests.Features.Braces
 {
@@ -16,7 +17,7 @@ namespace ExperimentalTools.Tests.Features.Braces
         }
 
         protected override CodeRefactoringProvider Provider => 
-            new RemoveBracesRefactoring(new OptionsService());
+            new RemoveBracesRefactoring(new OptionsService(new EnvironmentService()));
 
         [Theory, MemberData("HasActionTestData")]
         public Task HasActionTest(string test, string input, string expectedOutput) =>

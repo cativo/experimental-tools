@@ -1,4 +1,5 @@
-﻿using ExperimentalTools.Options;
+using ExperimentalTools.Environment;
+using ExperimentalTools.Options;
 using ExperimentalTools.Roslyn.Features.Constructor;
 using ExperimentalTools.Tests.Infrastructure;
 using ExperimentalTools.Tests.Infrastructure.Diagnostics;
@@ -15,7 +16,7 @@ namespace ExperimentalTools.Tests.Features.Constructor
 {
     public class FixConstructorNameCodeFixTests
     {
-        private readonly CodeFixProvider codeFixProvider = new FixConstructorNameCodeFix(new OptionsService());
+        private readonly CodeFixProvider codeFixProvider = new FixConstructorNameCodeFix(new OptionsService(new EnvironmentService()));
 
         private static async Task<Diagnostic> GetDiagnosticAsync(Document document)
         {

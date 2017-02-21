@@ -105,9 +105,12 @@
     <Compile Include="Features\GuidGenerator\CommandHandler.cs" />
     <Compile Include="Features\GuidGenerator\ViewCreationListener.cs" />
     <Compile Include="Features\Options\EnabledDisabledConverter.cs" />
+    <Compile Include="Features\Options\IOptionsSet.cs" />
+    <Compile Include="Features\Options\VS2015Options.cs" />
     <Compile Include="Features\Options\GeneralOptions.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Features\Options\PostVS2015Options.cs" />
     <Compile Include="source.extension.cs">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>

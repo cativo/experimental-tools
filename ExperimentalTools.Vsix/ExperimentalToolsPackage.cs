@@ -1,4 +1,6 @@
-﻿using ExperimentalTools.Vsix.Features.LocateInSolutionExplorer;
+using EnvDTE;
+using ExperimentalTools.Environment;
+using ExperimentalTools.Vsix.Features.LocateInSolutionExplorer;
 using ExperimentalTools.Vsix.Features.Options;
 using ExperimentalTools.Workspace;
 using Microsoft.VisualStudio;
@@ -30,11 +32,14 @@ namespace ExperimentalTools.Vsix
             var workspace = componentModel.GetService<VisualStudioWorkspace>();
             workspace.WorkspaceChanged += WorkspaceChanged;
 
+            var dte = (DTE)GetService(typeof(DTE));
+            EnvironmentData.Instance.IDEVersion = dte.Version;
+
             var generalOptions = (GeneralOptions)GetDialogPage(typeof(GeneralOptions));
             generalOptions.UpdateFeatureStates();
 
             LocateInSolutionExplorerCommand.Initialize(this);
-        }        
+        }
 
         private void WorkspaceChanged(object sender, Microsoft.CodeAnalysis.WorkspaceChangeEventArgs e)
         {

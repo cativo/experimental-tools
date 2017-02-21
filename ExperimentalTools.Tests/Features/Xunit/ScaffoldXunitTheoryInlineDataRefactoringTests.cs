@@ -1,4 +1,5 @@
-﻿using ExperimentalTools.Options;
+using ExperimentalTools.Environment;
+using ExperimentalTools.Options;
 using ExperimentalTools.Roslyn.Features.Xunit;
 using ExperimentalTools.Tests.Infrastructure.Refactoring;
 using Microsoft.CodeAnalysis;
@@ -18,7 +19,7 @@ namespace ExperimentalTools.Tests.Features.Xunit
         }
 
         protected override CodeRefactoringProvider Provider =>
-            new ScaffoldXunitTheoryInlineDataRefactoring(new OptionsService());
+            new ScaffoldXunitTheoryInlineDataRefactoring(new OptionsService(new EnvironmentService()));
 
         protected override IEnumerable<MetadataReference> AdditionalReferences =>
             new[] { MetadataReference.CreateFromFile(typeof(FactAttribute).Assembly.Location) };

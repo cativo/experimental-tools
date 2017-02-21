@@ -1,4 +1,5 @@
-﻿using ExperimentalTools.Options;
+using ExperimentalTools.Environment;
+using ExperimentalTools.Options;
 using ExperimentalTools.Roslyn.Features.Constructor;
 using ExperimentalTools.Tests.Infrastructure.Refactoring;
 using Microsoft.CodeAnalysis.CodeRefactorings;
@@ -17,7 +18,7 @@ namespace ExperimentalTools.Tests.Features.Constructor
         }
 
         protected override CodeRefactoringProvider Provider =>
-            new AddNewConstructorWithParameterRefactoring(new OptionsService());
+            new AddNewConstructorWithParameterRefactoring(new OptionsService(new EnvironmentService()));
 
         [Theory, MemberData("HasActionTestData")]
         public Task HasActionTest(string test, string input, string expectedOutput) =>

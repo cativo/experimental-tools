@@ -1,4 +1,5 @@
-﻿using ExperimentalTools.Options;
+using ExperimentalTools.Environment;
+using ExperimentalTools.Options;
 using ExperimentalTools.Roslyn.Features.Braces;
 using ExperimentalTools.Tests.Infrastructure.Refactoring;
 using Microsoft.CodeAnalysis.CodeRefactorings;
@@ -15,7 +16,7 @@ namespace ExperimentalTools.Tests.Features.Braces
         {
         }
 
-        protected override CodeRefactoringProvider Provider => new AddBracesRefactoring(new OptionsService());
+        protected override CodeRefactoringProvider Provider => new AddBracesRefactoring(new OptionsService(new EnvironmentService()));
 
         [Theory, MemberData("HasActionTestData")]
         public Task HasActionTest(string test, string input, string expectedOutput) =>

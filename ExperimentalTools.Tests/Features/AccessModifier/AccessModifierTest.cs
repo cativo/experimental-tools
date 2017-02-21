@@ -1,4 +1,5 @@
-﻿using ExperimentalTools.Options;
+using ExperimentalTools.Environment;
+using ExperimentalTools.Options;
 using ExperimentalTools.Roslyn.Features.AccessModifier;
 using ExperimentalTools.Roslyn.Features.AccessModifier.Recipes;
 using ExperimentalTools.Tests.Infrastructure.Refactoring;
@@ -20,6 +21,6 @@ namespace ExperimentalTools.Tests.Features.AccessModifier
                                             new TopLevelTypeRecipe(),
                                             new NestedInClassRecipe(),
                                             new NestedInStructRecipe()
-            }, new OptionsService());
+            }, new OptionsService(new EnvironmentService()));
     }
 }
